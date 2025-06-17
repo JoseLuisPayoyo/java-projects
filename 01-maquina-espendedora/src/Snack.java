@@ -50,4 +50,13 @@ public class Snack {
     public int hashCode() {
         return Objects.hash(idSnack, nombre, precio);
     }
+
+    @Override
+    public String toString() {
+        return "Snack{" +
+                "idSnack=" + idSnack +
+                ", nombre='" + nombre + '\'' +
+                ", precio=" + precio +
+                '}';
+    }
 }
