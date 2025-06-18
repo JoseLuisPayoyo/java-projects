@@ -5,13 +5,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Scanner;
 
 public class CrearRegistroActividades {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String ruta = "C:\\projects\\java-projects\\02-manejo-archivos\\src\\ejercicio2\\registro_actividades";
+        String ruta = "C:\\projects\\java-projects\\02-manejo-archivos\\src\\ejercicio2\\registro_actividades.txt";
         File actividades = new File(ruta);
 
         try {
