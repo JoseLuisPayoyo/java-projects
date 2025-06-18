@@ -12,7 +12,7 @@ public class Snacks {
         snacks.add(new Snack("Sandwich", 120));
     }
 
-    public ArrayList<Snack> getSnacks() {
+    public static ArrayList<Snack> getSnacks() {
         return snacks;
     }
 
