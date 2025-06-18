@@ -14,6 +14,8 @@ public class AgregarContenidoArchivo {
             var salida = new PrintWriter(new FileWriter(archivo, anexar));
             var nuevoContenido = "Nuevo\ncontenido";
             salida.println(nuevoContenido);
+
+            //guardar info en el archivo
             salida.close();
             System.out.println("Se agrego contenido al archivo");
         } catch (Exception e) {
