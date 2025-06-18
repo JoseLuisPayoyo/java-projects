@@ -1,25 +1,24 @@
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Snack {
+public class Snack implements Serializable {
 
-    private static int contadorSnacks;
+    private static int contadorSnacks = 0;
     private int idSnack;
     private String nombre;
     private double precio;
 
+    public Snack(){
+        this.idSnack = ++Snack.contadorSnacks;
+    }
     public Snack(String nombre, double precio) {
+        this(); //llama al constructor vacio para el contador
         this.nombre = nombre;
         this.precio = precio;
-        contadorSnacks++;
-        idSnack = contadorSnacks;
     }
 
     public int getIdSnack() {
         return idSnack;
-    }
-
-    public void setIdSnack(int idSnack) {
-        this.idSnack = idSnack;
     }
 
     public String getNombre() {
@@ -37,6 +36,8 @@ public class Snack {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
+
+    public static int getContadorSnacks() { return contadorSnacks; }
 
     @Override
     public boolean equals(Object o) {
