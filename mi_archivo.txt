@@ -1,4 +1,0 @@
-primeras
-lineas
-del
-archivo
