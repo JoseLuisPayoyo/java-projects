@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class CrearDiarioPersonal {
     public static void main(String[] args) {
-        String ruta = "C:\\projects\\java-projects\\02-manejo-archivos\\diario_personal.txt";
+        String ruta = "C:\\projects\\java-projects\\02-manejo-archivos\\src\\ejercicio1\\diario_personal.txt";
         File diario = new File(ruta);
         Scanner scanner = new Scanner(System.in);
 

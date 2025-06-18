@@ -8,7 +8,7 @@ import java.util.List;
 
 public class LeerDiario {
     public static void main(String[] args) {
-        String ruta = "C:\\projects\\java-projects\\02-manejo-archivos\\diario_personal.txt";
+        String ruta = "C:\\projects\\java-projects\\02-manejo-archivos\\src\\ejercicio1\\diario_personal.txt";
 
         try{
             List<String> contenido = Files.readAllLines(Paths.get(ruta));
