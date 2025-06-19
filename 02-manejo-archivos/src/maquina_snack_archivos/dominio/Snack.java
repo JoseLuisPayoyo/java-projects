@@ -41,6 +41,10 @@ public class Snack implements Serializable {
 
     public static int getContadorSnacks() { return contadorSnacks; }
 
+    public String escribirSnack(){
+        return idSnack + "," + nombre + "," + precio;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
