@@ -5,6 +5,8 @@ import maquina_snack_archivos.dominio.Snack;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,9 +26,8 @@ public class ServicioSnacksArchivos  implements IServicioSnacks{
 
         try{
             existe = archivo.exists();
-
             if (existe){
-                //this.snacks = obtenerSnacks();
+                this.snacks = obtenerSnacks();
             }else{ //creamos el archiov
                 var salida = new PrintWriter(new FileWriter(archivo));
                 salida.close();
@@ -45,6 +46,25 @@ public class ServicioSnacksArchivos  implements IServicioSnacks{
         this.agregarSnack(new Snack("Papas", 70));
         this.agregarSnack(new Snack("Refresco", 50));
         this.agregarSnack(new Snack("Sandwich", 120));
+    }
+
+    private ArrayList<Snack> obtenerSnacks(){
+        var snacks = new ArrayList<Snack>();
+        try {
+            List<String> lineas = Files.readAllLines(Paths.get(NOMBRE_ARCHIVO));
+            for (String linea : lineas){
+                String[] lineaSnack = linea.split(",");//separar cada vez que haya comas
+                var idSnack = lineaSnack[0]; //no se usa
+                var nombre = lineaSnack[1];
+                var precio = Double.parseDouble(lineaSnack[2]);
+
+                var snack = new Snack(nombre, precio);
+                snacks.add(snack); //agregamos el snack a la lista
+            }
+        } catch (Exception e) {
+            System.out.println("Erro al leer el archivo de snacks: " + e.getMessage());
+        }
+        return snacks;
     }
 
     @Override
@@ -73,7 +93,12 @@ public class ServicioSnacksArchivos  implements IServicioSnacks{
 
     @Override
     public void mostrarSnack() {
-
+        System.out.println(" --- Snacks en el inventario ---");
+        var inventarioSnack = "";
+        for (var snack : this.snacks){
+            inventarioSnack += snack.toString() + "\n";
+        }
+        System.out.println(inventarioSnack);
     }
 
     @Override
