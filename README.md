@@ -9,6 +9,7 @@ Cada carpeta incluye un proyecto independiente con su propio código fuente y do
 - `01-hola-mundo/` – Primer programa en Java
 - `02-poo-animales/` – Introducción a Programación Orientada a Objetos
 - `03-api-rest-tienda/` – API REST simulada para gestión de productos
+- `Sin Numero` – Proyectos para apliocar lo aprendido
 
 ## 🚀 Tecnologías y herramientas
 
