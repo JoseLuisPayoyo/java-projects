@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/02-ejercicios-manejo-archivos/02-ejercicios-manejo-archivos.iml" filepath="$PROJECT_DIR$/02-ejercicios-manejo-archivos/02-ejercicios-manejo-archivos.iml" />
       <module fileurl="file://$PROJECT_DIR$/02-manejo-archivos/02-manejo-archivos.iml" filepath="$PROJECT_DIR$/02-manejo-archivos/02-manejo-archivos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/03-db-java-jdbc-nysql/03-db-java-jdbc-nysql.iml" filepath="$PROJECT_DIR$/03-db-java-jdbc-nysql/03-db-java-jdbc-nysql.iml" />
       <module fileurl="file://$PROJECT_DIR$/java-projects.iml" filepath="$PROJECT_DIR$/java-projects.iml" />
     </modules>
   </component>
