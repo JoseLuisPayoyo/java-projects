@@ -52,14 +52,49 @@ public class ClienteDAO implements IClienteDAO{
         try{
             ps = con.prepareStatement(sql);
             ps.setInt(1, cliente.getId());//1 indica que el id va en el primer ? que hay en el statment
+            rs = ps.executeQuery();
+            if (rs.next()){ //pregunta si tenemos un regitro
+                cliente.setNombre(rs.getString("nombre"));
+                cliente.setApellido(rs.getString("apellido"));
+                cliente.setMembresia(rs.getInt("membresia"));
+                return true;
+            }
         } catch (Exception e) {
             System.out.println("Error al recuperar cliente por id: " + e.getMessage());
+        }
+        finally {
+            try{
+                con.close();
+            } catch (Exception e) {
+                System.out.println("Error al cerrar conexion: " + e.getMessage());
+            }
         }
         return false;
     }
 
     @Override
     public boolean agregarCliente(Cliente cliente) {
+        PreparedStatement ps;
+        Connection con = Conexion.getConnection();
+        var sql = "INSERT INTO cliente(nombre, apellido, membresia) "
+                + "VALUES(?, ?, ?)";
+
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, cliente.getNombre());
+            ps.setString(2, cliente.getApellido());
+            ps.setInt(3, cliente.getMembresia());
+            ps.execute();
+            return true;
+        } catch (Exception e) {
+            System.out.println("Error al agregar cliente: " + e.getMessage());
+        } finally {
+            try {
+                con.close();
+            } catch (Exception e){
+                System.out.println("Error al cerrar conexion: " + e.getMessage());
+            }
+        }
         return false;
     }
 
@@ -79,5 +114,14 @@ public class ClienteDAO implements IClienteDAO{
         IClienteDAO clienteDao = new ClienteDAO();
         var clientes = clienteDao.listarClientes();
         clientes.forEach(System.out::println);
+
+        //buscar por id
+        var cliente1 = new Cliente(2);
+        var encontrado = clienteDao.buscarClientePorId(cliente1);
+        if (encontrado) {
+            System.out.println("\nCliente encontrado:" + cliente1);
+        }else{
+            System.out.println("\nNo se encontro el cliente con el id: " + cliente1.getId());
+        }
     }
 }
