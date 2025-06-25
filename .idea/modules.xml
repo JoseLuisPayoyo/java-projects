@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/02-ejercicios-manejo-archivos/02-ejercicios-manejo-archivos.iml" filepath="$PROJECT_DIR$/02-ejercicios-manejo-archivos/02-ejercicios-manejo-archivos.iml" />
       <module fileurl="file://$PROJECT_DIR$/02-manejo-archivos/02-manejo-archivos.iml" filepath="$PROJECT_DIR$/02-manejo-archivos/02-manejo-archivos.iml" />
       <module fileurl="file://$PROJECT_DIR$/java-projects.iml" filepath="$PROJECT_DIR$/java-projects.iml" />
     </modules>
