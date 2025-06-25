@@ -1,11 +1,11 @@
 package zona_fit.datos;
 
 import zona_fit.dominio.Cliente;
-import java.util.List;
+import java.util.ArrayList;
 
 public interface IClienteDAO {
 
-    List<Cliente> listarClientes();
+    ArrayList<Cliente> listarClientes();
 
     boolean buscarClientePorId(Cliente cliente);
     boolean agregarCliente(Cliente cliente);
