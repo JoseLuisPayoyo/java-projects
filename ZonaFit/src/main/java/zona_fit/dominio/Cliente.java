@@ -64,13 +64,11 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", membresia=" + membresia +
-                '}';
+        return String.format("Cliente [%d]: %s %s | Membresía #%d",
+                id, nombre, apellido, membresia);
     }
+
+
 
     @Override
     public boolean equals(Object o) {
