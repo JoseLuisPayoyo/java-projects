@@ -148,48 +148,4 @@ public class ClienteDAO implements IClienteDAO{
         }
         return false;
     }
-
-    public static void main(String[] args) {
-        // listar clientes
-        System.out.println("*** Listar Clientes ***");
-        IClienteDAO clienteDao = new ClienteDAO();
-        var clientes = clienteDao.listarClientes();
-        clientes.forEach(System.out::println);
-
-        //buscar por id
-//        var cliente1 = new Cliente(2);
-//        var encontrado = clienteDao.buscarClientePorId(cliente1);
-//        if (encontrado) {
-//            System.out.println("\nCliente encontrado:" + cliente1);
-//        }else{
-//            System.out.println("\nNo se encontro el cliente con el id: " + cliente1.getId());
-//        }
-
-        //agregar cliente
-//        var nuevoCliente = new Cliente("Daniel", "Monete", 5);
-//        var agregado = clienteDao.agregarCliente(nuevoCliente);
-//        if (agregado){
-//            System.out.println("Cliente agregado\n");
-//        }else{
-//            System.out.println("No se agrego");
-//        }
-
-        //modificar cliente
-//        var modificarCliente = new Cliente(3,"Pepe", "Tejeda", 4);
-//        var modificado = clienteDao.modificarCliente(modificarCliente);
-//        if (modificado){
-//            System.out.println("Cliente modificado: " + modificarCliente);
-//        } else{
-//            System.out.println("No se modifico el cliente: " + modificarCliente);
-//        }
-
-        //eliminar cliente
-//        var clienteEliminar = new Cliente(3);
-//        var eliminado = clienteDao.eliminarCliente(clienteEliminar);
-//        if (eliminado){
-//            System.out.println("Cliente eliminado: " + clienteEliminar);
-//        }else{
-//            System.out.println("Cliente no eliminado: " + clienteEliminar);
-//        }
-    }
 }
