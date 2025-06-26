@@ -1,5 +1,6 @@
 package jose.zona_fit;
 
+import jose.zona_fit.modelo.Cliente;
 import jose.zona_fit.servicio.IClienteServicio;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.List;
 import java.util.Scanner;
 
 @SpringBootApplication
@@ -38,7 +40,7 @@ public class ZonaFitApplication implements CommandLineRunner {
 
 		while(!salir){
 			var opcion = mostrarMenu(consola);
-			//salir = ejecutarOpciones(consola, opcion);
+			salir = ejecutarOpciones(consola, opcion);
 			logger.info(nl); //salto de linea
 		}
 	}
@@ -54,5 +56,17 @@ public class ZonaFitApplication implements CommandLineRunner {
 				6. Salir
 				Elige una opcion:\s""");
 		return Integer.parseInt(consola.nextLine());
+	}
+
+	private boolean ejecutarOpciones(Scanner consola, int opcion){
+		var salir = false;
+		switch (opcion){
+			case 1 -> {
+				logger.info(nl + "--- Listado de Clientes ---" + nl);
+				List<Cliente> clientes = clienteServicio.listarCliente();
+				clientes.forEach(cliente -> logger.info(cliente.toString() + nl));
+			}
+		}
+		return salir;
 	}
 }
