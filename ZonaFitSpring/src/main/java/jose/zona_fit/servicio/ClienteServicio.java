@@ -23,7 +23,7 @@ public class ClienteServicio implements IClienteServicio{
     @Override
     public Cliente buscarClientePorId(Integer idCliente) {
         Cliente cliente = clienteRepositorio.findById(idCliente).orElse(null);
-        return null;
+        return cliente;
     }
 
     @Override
