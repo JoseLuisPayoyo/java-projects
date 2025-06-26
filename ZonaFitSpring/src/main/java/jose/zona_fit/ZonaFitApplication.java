@@ -78,6 +78,67 @@ public class ZonaFitApplication implements CommandLineRunner {
 					logger.info("Cliente no encontrado: " + cliente + nl);
 
 			}
+
+			case 3 -> { //agregar cliente
+				logger.info(nl + "--- Agregar Cliente ---" + nl);
+				logger.info("Nombre: ");
+				var nombre = consola.nextLine();
+				logger.info("Apellido: ");
+				var apellido = consola.nextLine();
+				logger.info("Membresia: ");
+				var membresia = Integer.parseInt(consola.nextLine());
+
+				Cliente cliente = new Cliente();
+				cliente.setNombre(nombre);
+				cliente.setApellido(apellido);
+				cliente.setMembresia(membresia);
+
+				clienteServicio.guardarCliente(cliente);
+				logger.info("Cliente agregado: " + cliente + nl);
+			}
+
+			case 4 -> { //modificar cliente
+				logger.info(nl + "--- Modificar Cliente ---" + nl);
+				logger.info("Id Cliente: ");
+				var idCliente = Integer.parseInt(consola.nextLine());
+				Cliente cliente = clienteServicio.buscarClientePorId(idCliente);
+				if (cliente != null){
+					logger.info("Nombre: ");
+					var nombre = consola.nextLine();
+					logger.info("Apellido: ");
+					var apellido = consola.nextLine();
+					logger.info("Membresia: ");
+					var membresia = Integer.parseInt(consola.nextLine());
+
+					cliente.setNombre(nombre);
+					cliente.setApellido(apellido);
+					cliente.setMembresia(membresia);
+					clienteServicio.guardarCliente(cliente);
+					logger.info("Cliente modificado: " + cliente + nl);
+				} else{
+					logger.info("Cliente no encontrado: " + cliente + nl);
+				}
+			}
+
+			case 5 -> { //eliminar cliente
+				logger.info(nl + "--- Eliminar Cliente ---" + nl);
+				logger.info("Id Cliente: ");
+				var idCliente = Integer.parseInt(consola.nextLine());
+				var cliente = clienteServicio.buscarClientePorId(idCliente);
+				if (cliente != null){
+					clienteServicio.eliminarCliente(cliente);
+					logger.info("Cliente eliminado: " + cliente + nl);
+				}else{
+					logger.info("Cliente no encontrado: " + cliente + nl);
+				}
+			}
+
+			case 6 -> { //salir
+				logger.info("Saliendo...." + nl + nl);
+				salir = true;
+			}
+
+			default -> logger.info("Opcion no valida");
 		}
 		return salir;
 	}
