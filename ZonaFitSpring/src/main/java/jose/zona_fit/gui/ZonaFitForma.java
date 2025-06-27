@@ -39,6 +39,7 @@ public class ZonaFitForma extends  JFrame{
                 cargarClienteSeleccionado();
             }
         });
+        eliminarButton.addActionListener(e -> eliminarCliente());
     }
 
     private void iniciarForma(){
@@ -88,10 +89,12 @@ public class ZonaFitForma extends  JFrame{
         var nombre = nombreTexto.getText();
         var apellido = apellidoTexto.getText();
         var membresia = Integer.parseInt(membresiaTexto.getText());
-        var cliente = new Cliente();
-        cliente.setNombre(nombre);
-        cliente.setApellido(apellido);
-        cliente.setMembresia(membresia);
+        var cliente = new Cliente(this.idCliente, nombre, apellido, membresia);
+        if (this.idCliente == null){
+            mostrarMensaje("Se agrego el cliente");
+        }else{
+            mostrarMensaje("Se actualizo el cliente");
+        }
         this.clienteServicio.guardarCliente(cliente);
         limpiarFormulario();
         listarClientes();
@@ -111,6 +114,22 @@ public class ZonaFitForma extends  JFrame{
         }
     }
 
+    private void eliminarCliente(){
+        var renglon = clientesTabla.getSelectedRow();
+        if (renglon != -1){
+            var idClienteStr = clientesTabla.getModel().getValueAt(renglon, 0).toString();
+            this.idCliente = Integer.parseInt(idClienteStr);
+            var cliente = new Cliente();
+            cliente.setId(this.idCliente);
+            clienteServicio.eliminarCliente(cliente);
+            mostrarMensaje("Cliente con id: " + idCliente + " elminado");
+            limpiarFormulario();
+            listarClientes();
+        } else{
+            mostrarMensaje("Debe seleccionar un cliente");
+        }
+    }
+
     private void mostrarMensaje(String mensaje){
         JOptionPane.showMessageDialog(this, mensaje);
     }
@@ -119,5 +138,9 @@ public class ZonaFitForma extends  JFrame{
         nombreTexto.setText("");
         apellidoTexto.setText("");
         membresiaTexto.setText("");
+        //limpiamos el id del cliente seleccionado
+        this.idCliente = null;
+        //deseleccionamos el registro de la tabla
+        this.clientesTabla.getSelectionModel().clearSelection();
     }
 }
