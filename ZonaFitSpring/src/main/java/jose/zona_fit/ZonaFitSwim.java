@@ -1,5 +1,6 @@
 package jose.zona_fit;
 
+import com.formdev.flatlaf.FlatDarculaLaf;
 import jose.zona_fit.gui.ZonaFitForma;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
@@ -12,6 +13,8 @@ import javax.swing.*;
 @SpringBootApplication
 public class ZonaFitSwim {
     public static void main(String[] args) {
+        // configuramos el modo oscuro
+        FlatDarculaLaf.setup();
         //Instanciar la fabrica de spring
         ConfigurableApplicationContext contextoSpring = new SpringApplicationBuilder(ZonaFitSwim.class)
                 .headless(false)
