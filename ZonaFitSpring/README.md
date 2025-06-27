@@ -20,7 +20,7 @@ Próxima versión: WebApp con API REST + frontend moderno
 ---
 
 ## 📷 Captura de pantalla
-![Interfaz de ZonaFit] img_prueba
+![Interfaz de ZonaFit] img_prueba.png
 
 
 ---
